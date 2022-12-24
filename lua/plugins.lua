@@ -12,6 +12,8 @@ packer.startup(function(use)
                 'svrana/neosolarized.nvim',
                 requires = { 'tjdevries/colorbuddy.nvim' }
         }
+        use 'jose-elias-alvarez/null-ls.nvim'
+        use 'MunifTanjim/prettier.nvim'
         use 'kyazdani42/nvim-web-devicons'
         use 'L3MON4D3/LuaSnip'
         use 'hoob3rt/lualine.nvim'

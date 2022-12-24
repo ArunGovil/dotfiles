@@ -16,4 +16,5 @@ The IDE is being actively updated as I'm diving deeper into Neovim ecosystem. So
 - Status Line
 - Live suggestions
 - Multiple Language support
-- Custom theme
+- Neosolarized Theme
+- Prettier Code formatting
