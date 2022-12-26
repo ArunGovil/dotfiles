@@ -16,7 +16,8 @@ ts.setup {
                 "yaml",
                 "css",
                 "html",
-                "lua"
+                "lua",
+                "vue"
         },
         autotag = {
                 enable = true,
