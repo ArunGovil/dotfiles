@@ -4,7 +4,7 @@ local lspkind = require 'lspkind'
 
 cmp.setup({
         snippet = {
-                expnd = function(args)
+                expand = function(args)
                         require('luasnip').lsp_expand(args.body)
                 end
         },
@@ -29,5 +29,5 @@ cmp.setup({
 
 vim.cmd [[
 set completeopt=menuone,noinsert,noselect
-highlight default link CmpItemKind CmpItemMenuDefault
+highlight! default link CmpItemKind CmpItemMenuDefault
 ]]

@@ -2,7 +2,7 @@ local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 
 local protocol = require('vim.lsp.protocol')
-
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local on_attach = function(client, bufnr)
         if client.server_capabilities.documentFormattingProvider then
                 vim.api.nvim_command [[augroup Format]]

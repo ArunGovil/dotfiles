@@ -26,4 +26,10 @@ packer.startup(function(use)
         use 'nvim-telescope/telescope.nvim'
         use 'nvim-telescope/telescope-file-browser.nvim'
         use 'lewis6991/gitsigns.nvim'
+        use {
+                'nvim-treesitter/nvim-treesitter',
+                run = '"TSUpdate'
+        }
+        use 'windwp/nvim-autopairs'
+        use 'windwp/nvim-ts-autotag'
 end)
