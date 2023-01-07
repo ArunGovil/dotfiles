@@ -14,7 +14,7 @@ end
 
 nvim_lsp.tsserver.setup {
         on_attach = on_attach,
-        filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+        filetypes = { "typescript", "typescriptreact", "typescript.tsx", "typescript.ts" },
         cmd = { "typescript-language-server", "--stdio" },
         capabilities = capabilities
 }
@@ -40,6 +40,11 @@ nvim_lsp.tailwindcss.setup {
 }
 
 nvim_lsp.vuels.setup {
+        on_attach = on_attach,
+        capabilities = capabilities
+}
+
+nvim_lsp.prismals.setup {
         on_attach = on_attach,
         capabilities = capabilities
 }
