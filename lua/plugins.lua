@@ -8,10 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
         use 'wbthomason/packer.nvim'
-        use {
-                'svrana/neosolarized.nvim',
-                requires = { 'tjdevries/colorbuddy.nvim' }
-        }
+        use 'navarasu/onedark.nvim'
         use 'jose-elias-alvarez/null-ls.nvim'
         use 'MunifTanjim/prettier.nvim'
         use 'kyazdani42/nvim-web-devicons'
