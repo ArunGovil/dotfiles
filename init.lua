@@ -1,5 +1,4 @@
-require('base')
-require('highlights')
-require('plugins')
-
-vim.cmd [[ colorscheme onedark ]]
+require("plugins")
+require("base")
+require("remaps")
+require("highlights")

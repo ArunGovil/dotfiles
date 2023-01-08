@@ -1,32 +1,42 @@
-local status, packer = pcall(require, 'packer')
-if (not status) then
-        print("Packer is not installed")
-        return
-end
+vim.cmd.packadd('packer.nvim')
 
-vim.cmd [[packadd packer.nvim]]
+return require('packer').startup(function(use)
+	use 'wbthomason/packer.nvim'
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+	use({
+		'rose-pine/neovim',
+		as = 'rose-pine',
+		config = function()
+			vim.cmd('colorscheme rose-pine')
+		end
+	})
+	use({
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	})
+	use('tpope/vim-fugitive')
 
-packer.startup(function(use)
-        use 'wbthomason/packer.nvim'
-        use 'navarasu/onedark.nvim'
-        use 'jose-elias-alvarez/null-ls.nvim'
-        use 'MunifTanjim/prettier.nvim'
-        use 'kyazdani42/nvim-web-devicons'
-        use 'L3MON4D3/LuaSnip'
-        use 'hoob3rt/lualine.nvim'
-        use 'onsails/lspkind-nvim'
-        use 'hrsh7th/cmp-buffer'
-        use 'hrsh7th/cmp-nvim-lsp'
-        use 'hrsh7th/nvim-cmp'
-        use 'neovim/nvim-lspconfig'
-        use 'nvim-lua/plenary.nvim'
-        use 'nvim-telescope/telescope.nvim'
-        use 'nvim-telescope/telescope-file-browser.nvim'
-        use 'lewis6991/gitsigns.nvim'
-        use {
-                'nvim-treesitter/nvim-treesitter',
-                run = '"TSUpdate'
-        }
-        use 'windwp/nvim-autopairs'
-        use 'windwp/nvim-ts-autotag'
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		requires = {
+			{'neovim/nvim-lspconfig'},
+			{'williamboman/mason.nvim'},
+			{'williamboman/mason-lspconfig.nvim'},
+			{'hrsh7th/nvim-cmp'},
+			{'hrsh7th/cmp-buffer'},
+			{'hrsh7th/cmp-path'},
+			{'saadparwaiz1/cmp_luasnip'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-nvim-lua'},
+			{'L3MON4D3/LuaSnip'},
+		}
+	}
+
 end)

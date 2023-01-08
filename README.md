@@ -1,6 +1,5 @@
 <h3 align="center">
-The repository contains dotfiles of my Neovim setup inspired from <a href="https://github.com/craftzdog/">devaslife.</a>
-</h3>
+The repository contains dotfiles for my Neovim setup which I use for daily development</h3>
 
 ---
 
