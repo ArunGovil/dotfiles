@@ -1,5 +1,5 @@
 <h3 align="center">
-The repository contains dotfiles for my Neovim setup. ⚡</h3>
+The repository contains dotfiles for my Neovim setup! ⚡</h3>
 
 ---
 
@@ -41,3 +41,11 @@ Once the installation is complete, all configuration will be applied to your neo
 
 > **Note**
 > Some of the configurations will require additional installations, like [prettierd](https://github.com/fsouza/prettierd).
+
+### How to configure Tmux?
+Tmux can be configured by editing tmux.conf file which is present in the root directory. If the file is not present you can simply create one and save with your configurations.
+
+```sh
+nvim ~/.tmux.conf
+```
+You can find my Tmux config file [here](https://gist.github.com/ArunGovil/7b19897f6d872113c0ce71646884dba0).
