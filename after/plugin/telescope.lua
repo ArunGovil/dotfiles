@@ -6,7 +6,7 @@ require('telescope').setup{
         },
 }
 
-vim.keymap.set('n', '<leader>ps',   function()
+vim.keymap.set('n', ';f',   function()
         builtin.find_files({
                 no_ignore = false,
                 hidden = false
