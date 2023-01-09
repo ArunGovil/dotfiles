@@ -1,45 +1,46 @@
-vim.cmd.packadd('packer.nvim')
+vim.cmd.packadd("packer.nvim")
 
-return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+return require("packer").startup(function(use)
+	use("wbthomason/packer.nvim")
 	use({
-		'rose-pine/neovim',
-		as = 'rose-pine',
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
 		config = function()
-			vim.cmd('colorscheme rose-pine')
-		end
+			vim.cmd("colorscheme rose-pine")
+		end,
 	})
 	use({
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
 	})
-	use('tpope/vim-fugitive')
+	use("tpope/vim-fugitive")
 
-	use {
-		'VonHeikemen/lsp-zero.nvim',
+	use({
+		"VonHeikemen/lsp-zero.nvim",
 		requires = {
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
-			{'L3MON4D3/LuaSnip'},
-		}
-	}
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "L3MON4D3/LuaSnip" },
+		},
+	})
 
-        use 'windwp/nvim-autopairs'
-        use 'windwp/nvim-ts-autotag'
-        use 'jose-elias-alvarez/null-ls.nvim'
+	use("windwp/nvim-autopairs")
+	use("windwp/nvim-ts-autotag")
+	use("jose-elias-alvarez/null-ls.nvim")
 end)

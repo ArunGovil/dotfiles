@@ -1,19 +1,18 @@
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 
-require('telescope').setup{
-        defaults = {
-                file_ignore_patterns = { "node_modules", "android", "ios" },
-        },
-}
+require("telescope").setup({
+	defaults = {
+		file_ignore_patterns = { "node_modules", "android", "ios" },
+	},
+})
 
-vim.keymap.set('n', ';f',   function()
-        builtin.find_files({
-                no_ignore = false,
-                hidden = false
-        })
+vim.keymap.set("n", ";f", function()
+	builtin.find_files({
+		no_ignore = false,
+		hidden = false,
+	})
 end)
 
-vim.keymap.set('n', '<leader>ld', function()
-        builtin.grep_string({ search = vim.fn.input("Grep > ") });
+vim.keymap.set("n", "<leader>ld", function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
-
