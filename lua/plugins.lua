@@ -4,7 +4,6 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -22,7 +21,6 @@ return require("packer").startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-	use("tpope/vim-fugitive")
 
 	use({
 		"VonHeikemen/lsp-zero.nvim",
@@ -43,4 +41,5 @@ return require("packer").startup(function(use)
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
 	use("jose-elias-alvarez/null-ls.nvim")
+	use("lewis6991/gitsigns.nvim")
 end)
