@@ -4,6 +4,11 @@ require("telescope").setup({
 	defaults = {
 		file_ignore_patterns = { "node_modules", "android", "ios" },
 	},
+	pickers = {
+		find_files = {
+			disable_devicons = true,
+		},
+	},
 })
 
 vim.keymap.set("n", ";f", function()

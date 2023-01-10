@@ -1,6 +1,12 @@
-vim.g.mapleader = ";"
-vim.keymap.set("n", "<leader>d", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>y", '"+y')
+vim.g.mapleader = ";" -- Leader Key
+vim.keymap.set("n", "<leader>d", vim.cmd.Ex) -- Open Explorer
+vim.keymap.set("n", "<leader>dd", vim.cmd.Rex) -- Close Explorer
+vim.keymap.set("n", "<leader>y", '"+y') -- Yank to Clipboard
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
-vim.keymap.set("n", "<leader>s", "ggVG")
+vim.keymap.set("n", "<leader>s", "ggVG") -- Select all
+vim.keymap.set("n", "<leader>e", "G") -- Move to End
+vim.keymap.set("n", "<leader>w", "gg") -- Move to Start
+vim.keymap.set("n", "<leader>r", "$") -- Line end
+vim.keymap.set("n", "<leader>q", "^") -- Line start
+vim.keymap.set("n", "<leader>c", vim.cmd.noh) -- Clear find
