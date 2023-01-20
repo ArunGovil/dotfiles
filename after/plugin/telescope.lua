@@ -11,13 +11,13 @@ require("telescope").setup({
 	},
 })
 
-vim.keymap.set("n", ";f", function()
+vim.keymap.set("n", "<leader>f", function()
 	builtin.find_files({
 		no_ignore = false,
 		hidden = false,
 	})
 end)
 
-vim.keymap.set("n", "<leader>ld", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+vim.keymap.set("n", "<leader>g", function()
+	builtin.live_grep()
 end)
