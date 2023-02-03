@@ -10,3 +10,4 @@ vim.keymap.set("n", "<leader>w", "gg") -- Move to Start
 vim.keymap.set("n", "<leader>e", "$") -- Line end
 vim.keymap.set("n", "<leader>q", "^") -- Line start
 vim.keymap.set("n", "<leader>c", vim.cmd.noh) -- Clear find
+vim.keymap.set("n", "<leader>x", '"_dd') -- Delete without yank
