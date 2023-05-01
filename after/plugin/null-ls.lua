@@ -20,5 +20,6 @@ null_ls.setup({
 		}),
 		null_ls.builtins.code_actions.eslint,
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.completion.spell,
 	},
 })
