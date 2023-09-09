@@ -1,29 +1,27 @@
-vim.cmd.packadd("packer.nvim")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-	use("nvim-lualine/lualine.nvim")
-	use("nvim-lua/plenary.nvim")
-	use("nvim-telescope/telescope.nvim")
-	use("rose-pine/neovim")
-	use("nvim-treesitter/nvim-treesitter")
-	use({
-		"VonHeikemen/lsp-zero.nvim",
-		requires = {
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-nvim-lua" },
-			{ "L3MON4D3/LuaSnip" },
-		},
-	})
-	use("windwp/nvim-autopairs")
-	use("windwp/nvim-ts-autotag")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("lewis6991/gitsigns.nvim")
-end)
+vim.g.mapleader = " " 
+require("lazy").setup({
+{ "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+{ "nvim-lualine/lualine.nvim", lazy = false, priority = 1000 },
+{'akinsho/toggleterm.nvim', version = "*", config = true},
+{'lewis6991/gitsigns.nvim', version = "*", config = true},
+{'nvim-lua/plenary.nvim'},
+{'windwp/nvim-autopairs', version = "*", config = true},
+{'windwp/nvim-ts-autotag', version = "*", config = true},
+{'BurntSushi/ripgrep'},
+{'nvim-treesitter/nvim-treesitter', version = "*", config = true},
+{'nvim-telescope/telescope.nvim', version = "*", config = true},
+{"neovim/nvim-lspconfig"}
+})
