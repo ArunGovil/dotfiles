@@ -9,9 +9,10 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
 
+vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " 
+
 require("lazy").setup({
 { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
 { "nvim-lualine/lualine.nvim", lazy = false, priority = 1000 },
@@ -23,5 +24,21 @@ require("lazy").setup({
 {'BurntSushi/ripgrep'},
 {'nvim-treesitter/nvim-treesitter', version = "*", config = true},
 {'nvim-telescope/telescope.nvim', version = "*", config = true},
-{"neovim/nvim-lspconfig"}
+{"neovim/nvim-lspconfig"},
+{"nvim-tree/nvim-web-devicons"},
+{
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("nvim-tree").setup {
+            disable_netrw = true,
+            hijack_netrw = true,
+            open_on_tab = true,
+    }
+    end,
+}
 })

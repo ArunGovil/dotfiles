@@ -11,15 +11,11 @@ The dotfiles in this repository holds the configuration for my Neovim text edito
 
 The setup is being actively updated as I'm diving deeper into Neovim ecosystem. Some of the present features include:
 
-- Syntax Highlighting
 - Status Line
-- Live suggestions
-- Multiple Language support
-- Prettier Code formatting
 - Auto close tags
 - Telescope fuzz finder
 - Git integration
-- Packer package management
+- Lazy Nvim package manager
 
 ### How to install the config?
 
@@ -29,11 +25,11 @@ cd .config/nvim
 
 git clone git@github.com:ArunGovil/dotfiles.git
 ```
-After cloning, open nvim and install the packages using Packer.
+After cloning, open nvim and install the packages using Lazy.
 ```sh
 nvim .
 
-:PackerInstall
+:Lazy
 ```
 Once the installation is complete, all configuration will be applied to your neovim.
 

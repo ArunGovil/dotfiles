@@ -1,6 +1,5 @@
 vim.g.mapleader = ";" -- Leader Key
-vim.keymap.set("n", "<leader>d", vim.cmd.Ex) -- Open Explorer
-vim.keymap.set("n", "<leader>dd", vim.cmd.Rex) -- Close Explorer
+vim.keymap.set("n", "<leader>d", ':NvimTreeToggle<CR>') -- Open Nvim Tree
 vim.keymap.set("n", "<leader>y", '"+y') -- Yank to Clipboard
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
