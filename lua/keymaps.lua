@@ -1,5 +1,6 @@
 vim.g.mapleader = ";" -- Leader Key
-vim.keymap.set("n", "<leader>d", ':NvimTreeToggle<CR>') -- Open Nvim Tree
+vim.keymap.set("n", "<leader>d", ':NvimTreeFindFile<CR>') -- Open Nvim Tree with current buffer
+vim.keymap.set("n", "<leader>l", ':NvimTreeToggle<CR>') -- Toggle Nvim Tree
 vim.keymap.set("n", "<leader>y", '"+y') -- Yank to Clipboard
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
