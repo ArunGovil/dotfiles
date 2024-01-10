@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " 
 
 require("lazy").setup({
-{ "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
 { "nvim-lualine/lualine.nvim", lazy = false, priority = 1000 },
 {'akinsho/toggleterm.nvim', version = "*", config = true},
 {'lewis6991/gitsigns.nvim', version = "*", config = true},
@@ -25,14 +25,11 @@ require("lazy").setup({
 {'nvim-treesitter/nvim-treesitter', version = "*", config = true},
 {'nvim-telescope/telescope.nvim', version = "*", config = true},
 {"neovim/nvim-lspconfig"},
-{"nvim-tree/nvim-web-devicons"},
 {
   "nvim-tree/nvim-tree.lua",
   version = "*",
   lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
+  dependencies = {},
   config = function()
     require("nvim-tree").setup {
             disable_netrw = true,
@@ -42,3 +39,5 @@ require("lazy").setup({
     end,
 }
 })
+
+vim.cmd [[colorscheme catppuccin]]

@@ -21,8 +21,7 @@ vim.opt.winblend = 0
 vim.opt.background = "dark"
 vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 5
-vim.cmd [[colorscheme nightfly]]
-
+vim.opt.fillchars = { eob = " ", diff = "╱" }
 vim.api.nvim_create_autocmd({"QuitPre"}, {
     callback = function() vim.cmd("NvimTreeClose") end,
 })
