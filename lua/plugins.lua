@@ -13,22 +13,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
-local HEIGHT_RATIO = 0.8 -- You can change this
-local WIDTH_RATIO = 0.5 -- You can change this too
+local HEIGHT_RATIO = 0.8
+local WIDTH_RATIO = 0.5
 
 require("lazy").setup({
 	{
-		"rebelot/kanagawa.nvim",
-		name = "kanagawa",
+		"catppuccin/nvim",
+		name = "catppuccin",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("kanagawa").setup({
-				commentStyle = { italic = false },
-				theme = "dragon",
-				background = {
-					dark = "dragon",
-				},
+			require("catppuccin").setup({
+				no_italic = true,
 			})
 		end,
 	},
@@ -272,4 +268,4 @@ require("lazy").setup({
 	},
 })
 
-vim.cmd([[colorscheme kanagawa]])
+vim.cmd([[colorscheme catppuccin]])
