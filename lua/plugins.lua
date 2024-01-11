@@ -17,7 +17,21 @@ local HEIGHT_RATIO = 0.8 -- You can change this
 local WIDTH_RATIO = 0.5 -- You can change this too
 
 require("lazy").setup({
-	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
+	{
+		"rebelot/kanagawa.nvim",
+		name = "kanagawa",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("kanagawa").setup({
+				commentStyle = { italic = false },
+				theme = "dragon",
+				background = {
+					dark = "dragon",
+				},
+			})
+		end,
+	},
 	{ "nvim-lualine/lualine.nvim", lazy = false, priority = 1000 },
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "lewis6991/gitsigns.nvim", version = "*", config = true },
@@ -258,4 +272,4 @@ require("lazy").setup({
 	},
 })
 
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme kanagawa]])
