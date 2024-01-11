@@ -23,3 +23,4 @@ vim.keymap.set("n", "<leader>f", [[<cmd>Telescope find_files<cr>]], { noremap = 
 vim.keymap.set("n", "<leader>g", [[<cmd>Telescope live_grep<cr>]], { noremap = true, silent = true }) -- Live grep
 vim.keymap.set("n", "<leader>b", [[<cmd>Telescope buffers<cr>]], { noremap = true, silent = true }) -- Find buffers
 vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>", { noremap = true, silent = true }) -- Toggle terminal
+vim.keymap.set("n", "<leader>v", "<C-v>", { noremap = true }) -- Select line mode for comments

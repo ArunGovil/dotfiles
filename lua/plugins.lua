@@ -28,7 +28,22 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ "nvim-lualine/lualine.nvim", lazy = false, priority = 1000 },
+	{
+		"nvim-lualine/lualine.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = false,
+					globalstatus = true,
+					component_separators = "▏", --"┃",
+					section_separators = "",
+					refresh = { statusline = 50 },
+				},
+			})
+		end,
+	},
 	{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	{ "lewis6991/gitsigns.nvim", version = "*", config = true },
 	{ "nvim-lua/plenary.nvim" },
@@ -233,13 +248,13 @@ require("lazy").setup({
 		dependencies = {},
 		config = function()
 			require("nvim-tree").setup({
-				disable_netrw = true,
-				hijack_netrw = true,
+				disable_netrw = false,
+				hijack_netrw = false,
 				open_on_tab = true,
 				view = {
 					relativenumber = true,
 					float = {
-						enable = true,
+						enable = false,
 						open_win_config = function()
 							local screen_w = vim.opt.columns:get()
 							local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
@@ -259,9 +274,7 @@ require("lazy").setup({
 							}
 						end,
 					},
-					width = function()
-						return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
-					end,
+					width = 30,
 				},
 			})
 		end,
