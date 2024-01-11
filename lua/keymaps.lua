@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>f", [[<cmd>Telescope find_files<cr>]], { noremap = 
 vim.keymap.set("n", "<leader>g", [[<cmd>Telescope live_grep<cr>]], { noremap = true, silent = true }) -- Live grep
 vim.keymap.set("n", "<leader>b", [[<cmd>Telescope buffers<cr>]], { noremap = true, silent = true }) -- Find buffers
 vim.keymap.set("n", "<leader>v", "<C-v>", { noremap = true }) -- Select line mode for comments
-vim.keymap.set("n", "<leader>t", ":botright 18split term://zsh<CR>", options) -- Open terminal
+vim.keymap.set("n", "<leader>t", ":botright 56vsplit term://zsh<CR>", options) -- Open terminal
 -- Escape editing mode in terminal
 vim.api.nvim_exec(
 	[[
