@@ -1,3 +1,5 @@
+local options = { silent = true, noremap = true }
+
 vim.g.mapleader = ";" -- Leader Key
 vim.keymap.set("n", "<leader>d", ":NvimTreeFindFile<CR>") -- Open Nvim Tree with current buffer
 vim.keymap.set("n", "<leader>l", ":NvimTreeToggle<CR>") -- Toggle Nvim Tree
@@ -16,11 +18,18 @@ vim.keymap.set("n", "<leader>r", "cgn") -- Replace text
 vim.keymap.set("n", "<leader>z", ":vsplit<CR>", { noremap = true }) -- Split pane vertical
 vim.keymap.set("n", "<leader>,", ":split<CR>", { noremap = true }) -- Split pane horizontal
 vim.keymap.set("n", "<leader><Tab>", "<C-w>l", { noremap = true }) -- Move to right pane
-vim.keymap.set("n", "<leader>.", "<C-w>k", { noremap = true }) -- Move to top pane
+vim.keymap.set("n", "<leader>k", "<C-w>k", { noremap = true }) -- Move to top pane
 vim.keymap.set("n", "<leader>\\", "<C-w>h", { noremap = true }) -- Move to left pane
-vim.keymap.set("n", "<leader><CR>", "<C-w>j", { noremap = true }) -- Move to bottom pane
+vim.keymap.set("n", "<leader>j", "<C-w>j", { noremap = true }) -- Move to bottom pane
 vim.keymap.set("n", "<leader>f", [[<cmd>Telescope find_files<cr>]], { noremap = true, silent = true }) -- Find files
 vim.keymap.set("n", "<leader>g", [[<cmd>Telescope live_grep<cr>]], { noremap = true, silent = true }) -- Live grep
 vim.keymap.set("n", "<leader>b", [[<cmd>Telescope buffers<cr>]], { noremap = true, silent = true }) -- Find buffers
-vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>", { noremap = true, silent = true }) -- Toggle terminal
 vim.keymap.set("n", "<leader>v", "<C-v>", { noremap = true }) -- Select line mode for comments
+vim.keymap.set("n", "<leader>t", ":botright 18split term://zsh<CR>", options) -- Open terminal
+-- Escape editing mode in terminal
+vim.api.nvim_exec(
+	[[
+  tnoremap <Esc> <C-\><C-n>
+]],
+	false
+)
