@@ -27,6 +27,7 @@ vim.keymap.set("n", "<leader>b", [[<cmd>Telescope buffers<cr>]], { noremap = tru
 vim.keymap.set("n", "<leader>v", "<C-v>", { noremap = true }) -- Select line mode for comments
 vim.keymap.set("n", "<leader>t", ":botright 56vsplit term://zsh<CR>", options) -- Open terminal
 vim.keymap.set("n", "<leader>p", ":Neogit kind=vsplit<CR>", options) -- Open git
+vim.keymap.set("n", "<leader>`", ":bufdo bd | :Explore<CR>", options) -- Reload project
 -- Escape editing mode in terminal
 vim.api.nvim_exec(
 	[[
