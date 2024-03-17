@@ -75,6 +75,7 @@ require("lazy").setup({
 					yaml = { "prettier" },
 					markdown = { "prettier" },
 					lua = { "stylua" },
+					gopls = { "prettier" },
 				},
 				format_on_save = {
 					lsp_fallback = true,
@@ -141,6 +142,11 @@ require("lazy").setup({
 			})
 
 			lspconfig["cssls"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			lspconfig["gopls"].setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
@@ -233,6 +239,7 @@ require("lazy").setup({
 					"html",
 					"cssls",
 					"lua_ls",
+					"gopls",
 				},
 				automatic_installation = true, -- not the same as ensure_installed
 			})
