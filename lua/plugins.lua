@@ -10,6 +10,28 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
+local opts = { noremap = true, silent = true }
+local keymap = vim.keymap
+
+local on_attach = function(client, bufnr)
+	opts.buffer = bufnr
+
+	opts.desc = "Restart LSP"
+	keymap.set("n", "<leader>R", ":LspRestart<CR>", opts)
+
+	opts.desc = "Go to previous diagnostic"
+	keymap.set("n", "<leader>[", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+
+	opts.desc = "Go to next diagnostic"
+	keymap.set("n", "<leader>]", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+	opts.desc = "Show documentation for what is under cursor"
+	keymap.set("n", "<leader>;", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
+	opts.desc = "Show LSP references"
+	keymap.set("n", "<leader>'", "<cmd>Telescope lsp_references<CR>", opts)
+end
+
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
@@ -93,32 +115,20 @@ require("lazy").setup({
 		config = function()
 			local lspconfig = require("lspconfig")
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
-			local keymap = vim.keymap
 			local capabilities = cmp_nvim_lsp.default_capabilities()
-			local opts = { noremap = true, silent = true }
-			local on_attach = function(client, bufnr)
-				opts.buffer = bufnr
-
-				opts.desc = "Restart LSP"
-				keymap.set("n", "<leader>R", ":LspRestart<CR>", opts)
-
-				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "<leader>[", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "<leader>]", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-				opts.desc = "Show documentation for what is under cursor"
-				keymap.set("n", "<leader>;", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-				opts.desc = "Show LSP references"
-				keymap.set("n", "<leader>'", "<cmd>Telescope lsp_references<CR>", opts)
-			end
-
 			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+			end
+
+			local ts_attach = function(client, bufnr)
+				local has_flowconfig = vim.fn.globpath(client.config.root_dir, ".flowconfig")
+				if has_flowconfig ~= "" then
+					client.stop()
+				else
+					on_attach(client, bufnr)
+				end
 			end
 
 			lspconfig["html"].setup({
@@ -128,7 +138,7 @@ require("lazy").setup({
 
 			lspconfig["ts_ls"].setup({
 				capabilities = capabilities,
-				on_attach = on_attach,
+				on_attach = ts_attach,
 			})
 
 			lspconfig["cssls"].setup({
@@ -296,4 +306,12 @@ vim.api.nvim_create_autocmd({ "QuitPre" }, {
 	callback = function()
 		vim.cmd("NvimTreeClose")
 	end,
+})
+
+-- Flow setup
+require("lspconfig").flow.setup({
+	cmd = { "npx", "flow", "lsp" },
+	filetypes = { "javascript", "javascriptreact" },
+	on_attach = on_attach,
+	root_dir = require("lspconfig").util.root_pattern(".flowconfig"),
 })
