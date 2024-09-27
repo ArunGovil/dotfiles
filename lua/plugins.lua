@@ -14,17 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 require("lazy").setup({
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("catppuccin").setup({
-				no_italic = true,
-			})
-		end,
-	},
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 	{
 		"nvim-lualine/lualine.nvim",
 		lazy = false,
@@ -136,7 +126,7 @@ require("lazy").setup({
 				on_attach = on_attach,
 			})
 
-			lspconfig["tsserver"].setup({
+			lspconfig["ts_ls"].setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
@@ -235,7 +225,7 @@ require("lazy").setup({
 
 			mason_lspconfig.setup({
 				ensure_installed = {
-					"tsserver",
+					"ts_ls",
 					"html",
 					"cssls",
 					"lua_ls",
@@ -301,7 +291,7 @@ require("lazy").setup({
 	},
 })
 
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme gruvbox]])
 vim.api.nvim_create_autocmd({ "QuitPre" }, {
 	callback = function()
 		vim.cmd("NvimTreeClose")
