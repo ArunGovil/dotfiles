@@ -1,8 +1,14 @@
 local options = { silent = true, noremap = true }
 
-vim.g.mapleader = ";" -- Leader Key
+-- Terminal config
+local function open_terminal()
+	vim.cmd("botright 16split | terminal zsh")
+	vim.cmd("startinsert")
+end
+vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber | setlocal nowrap")
+
+vim.g.mapleader = ";" -- Leader
 vim.keymap.set("n", "<leader>d", ":NvimTreeFindFile<CR>") -- Open Nvim Tree with current buffer
-vim.keymap.set("n", "<leader>l", ":NvimTreeToggle<CR>") -- Toggle Nvim Tree
 vim.keymap.set("n", "<leader>y", '"+y') -- Yank to Clipboard
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
@@ -25,13 +31,9 @@ vim.keymap.set("n", "<leader>f", [[<cmd>Telescope find_files<cr>]], { noremap = 
 vim.keymap.set("n", "<leader>g", [[<cmd>Telescope live_grep<cr>]], { noremap = true, silent = true }) -- Live grep
 vim.keymap.set("n", "<leader>b", [[<cmd>Telescope buffers<cr>]], { noremap = true, silent = true }) -- Find buffers
 vim.keymap.set("n", "<leader>v", "<C-v>", { noremap = true }) -- Select line mode for comments
-vim.keymap.set("n", "<leader>t", ":botright 16split term://zsh<CR>", options) -- Open terminal
 vim.keymap.set("n", "<leader>p", ":Neogit kind=vsplit<CR>", options) -- Open git
 vim.keymap.set("n", "<leader>`", ":bufdo bd | :Explore<CR>", options) -- Reload project
--- Escape editing mode in terminal
-vim.api.nvim_exec(
-	[[
-  tnoremap <Esc> <C-\><C-n>
-]],
-	false
-)
+vim.keymap.set("n", "<leader>l", ":bprevious<CR>", options) -- Go to previous buffer
+vim.keymap.set("n", "<leader>t", open_terminal, options) -- Open terminal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", options) -- Escape terminal
+vim.keymap.set("n", "<leader>m", ":close<CR>", options) -- Minimize terminal
