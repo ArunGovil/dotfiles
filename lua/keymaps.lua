@@ -37,3 +37,5 @@ vim.keymap.set("n", "<leader>l", ":bprevious<CR>", options) -- Go to previous bu
 vim.keymap.set("n", "<leader>t", open_terminal, options) -- Open terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", options) -- Escape terminal
 vim.keymap.set("n", "<leader>m", ":close<CR>", options) -- Minimize terminal
+vim.keymap.set("n", "<leader>'", "gd", options) -- Go to definition
+vim.keymap.set("n", "<leader><CR>", "gf<CR>", options) -- Go to file
