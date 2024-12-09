@@ -84,10 +84,11 @@ require("lazy").setup({
 					css = { "prettier" },
 					html = { "prettier" },
 					json = { "prettier" },
-					yaml = { "prettier" },
+					yaml = { "yamlfmt" },
 					markdown = { "prettier" },
 					lua = { "stylua" },
 					gopls = { "prettier" },
+					c = { "clangd" },
 				},
 				format_on_save = {
 					lsp_fallback = true,
@@ -147,6 +148,11 @@ require("lazy").setup({
 			})
 
 			lspconfig["gopls"].setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			lspconfig["clangd"].setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
