@@ -20,6 +20,7 @@ vim.keymap.set("n", "<leader>q", "^") -- Line start
 vim.keymap.set("n", "q", "b", { noremap = true }) -- Move one word back
 vim.keymap.set("n", "<leader>c", vim.cmd.noh) -- Clear find
 vim.keymap.set("n", "<leader>x", '"_dd') -- Delete without yank
+vim.keymap.set("n", "dl", "daw") -- Delete curret word
 vim.keymap.set("n", "<leader>r", "cgn") -- Replace text
 vim.keymap.set("n", "<leader>z", ":vsplit<CR>", { noremap = true }) -- Split pane vertical
 vim.keymap.set("n", "<leader>,", ":split<CR>", { noremap = true }) -- Split pane horizontal
