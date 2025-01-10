@@ -68,6 +68,7 @@ require("lazy").setup({
 	{ "windwp/nvim-ts-autotag", version = "*", config = true },
 	{ "BurntSushi/ripgrep" },
 	{ "nvim-treesitter/nvim-treesitter", version = "*", config = true },
+	{ "norcalli/nvim-colorizer.lua", version = "*", event = "BufEnter", opts = { "*" } },
 	{ "nvim-telescope/telescope.nvim", version = "*", config = true },
 	{
 		"stevearc/conform.nvim",
