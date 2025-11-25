@@ -369,3 +369,17 @@ vim.api.nvim_create_autocmd("QuitPre", {
 		vim.cmd("NvimTreeClose")
 	end,
 })
+
+require("claude-code").setup({
+	window = {
+		position = "float",
+		float = {
+			width = "60%", -- Take up 90% of the editor width
+			height = "50%", -- Take up 90% of the editor height
+			row = "center", -- Center vertically
+			col = "center", -- Center horizontally
+			relative = "editor",
+			border = "double", -- Use double border style
+		},
+	},
+})
