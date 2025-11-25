@@ -70,7 +70,16 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter", version = "*", config = true },
 	{ "norcalli/nvim-colorizer.lua", version = "*", event = "BufEnter", opts = { "*" } },
 	{ "nvim-telescope/telescope.nvim", version = "*", config = true },
-	{ "github/copilot.vim", version = "*" },
+	{ "github/copilot.vim", version = "*", enabled = false },
+	{
+		"greggh/claude-code.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("claude-code").setup()
+		end,
+	},
 	{
 		"stevearc/conform.nvim",
 		lazy = true,
