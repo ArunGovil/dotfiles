@@ -10,7 +10,6 @@ vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
-vim.opt.cursorline = false
 vim.opt.scrolloff = 10
 vim.opt.laststatus = 2
 vim.opt.cursorline = true

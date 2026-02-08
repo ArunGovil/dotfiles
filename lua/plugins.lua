@@ -95,7 +95,6 @@ require("lazy").setup({
 	{ "lewis6991/gitsigns.nvim", config = true },
 
 	-- Editor enhancements
-	{ "nvim-lua/plenary.nvim" },
 	{ "windwp/nvim-autopairs", config = true },
 	{ "windwp/nvim-ts-autotag", config = true },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -105,7 +104,6 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim", config = true },
 
 	-- AI assistants
-	{ "github/copilot.vim", enabled = false },
 	{
 		"greggh/claude-code.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
