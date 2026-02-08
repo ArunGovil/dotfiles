@@ -41,3 +41,4 @@ end, { noremap = true }) -- Split open terminal
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true }) -- Toggle comment
 vim.keymap.set("v", "<leader>/", "gc", { remap = true }) -- Toggle comment (visual)
 vim.keymap.set("n", "<leader>h", "<cmd>ClaudeCodeContinue<CR>") -- Claude code (continue)
+vim.keymap.set("n", "<leader>H", "<cmd>ClaudeCode<CR>") -- Claude code (new)
