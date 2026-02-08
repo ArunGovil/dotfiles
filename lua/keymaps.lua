@@ -38,4 +38,4 @@ vim.keymap.set("n", "<leader>t", function()
 	vim.cmd("terminal zsh")
 	vim.cmd("startinsert")
 end, { noremap = true }) -- Split open terminal
-vim.keymap.set("n", "<leader>h", "<cmd>ClaudeCode<CR>") -- Claude code
+vim.keymap.set("n", "<leader>h", "<cmd>ClaudeCode --continue<CR>") -- Claude code (resume)
