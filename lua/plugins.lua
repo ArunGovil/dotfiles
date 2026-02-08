@@ -49,12 +49,7 @@ local function on_attach(client, bufnr)
 		"<cmd>Telescope lsp_references<CR>",
 		vim.tbl_extend("force", buffer_opts, { desc = "Show LSP references" })
 	)
-	keymap.set(
-		"n",
-		"gd",
-		vim.lsp.buf.definition,
-		vim.tbl_extend("force", buffer_opts, { desc = "Go to definition" })
-	)
+	keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", buffer_opts, { desc = "Go to definition" }))
 end
 
 -- TypeScript/Flow special attach
@@ -430,4 +425,3 @@ vim.api.nvim_create_autocmd("QuitPre", {
 		vim.cmd("NvimTreeClose")
 	end,
 })
-
