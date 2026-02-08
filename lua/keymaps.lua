@@ -38,4 +38,6 @@ vim.keymap.set("n", "<leader>t", function()
 	vim.cmd("terminal zsh")
 	vim.cmd("startinsert")
 end, { noremap = true }) -- Split open terminal
+vim.keymap.set("n", "<leader>/", "gcc", { remap = true }) -- Toggle comment
+vim.keymap.set("v", "<leader>/", "gc", { remap = true }) -- Toggle comment (visual)
 vim.keymap.set("n", "<leader>h", "<cmd>ClaudeCode --continue<CR>") -- Claude code (resume)
