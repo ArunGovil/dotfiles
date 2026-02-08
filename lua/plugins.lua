@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Set leader key before loading plugins
-vim.g.mapleader = " "
+vim.g.mapleader = ";"
 
 -- Common keymap options
 local opts = { noremap = true, silent = true }
@@ -64,11 +64,7 @@ end
 -- Plugin specifications
 require("lazy").setup({
 	-- Color scheme
-	{
-		"ellisonleao/gruvbox.nvim",
-		priority = 1000,
-		config = true,
-	},
+	{ "blazkowolf/gruber-darker.nvim" },
 
 	-- Status line
 	{
@@ -113,7 +109,15 @@ require("lazy").setup({
 	{
 		"greggh/claude-code.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = {},
+		opts = {
+			window = {
+				split_ratio = 0.3,
+				position = "vertical",
+				enter_insert = true,
+				hide_numbers = true,
+				hide_signcolumn = true,
+			},
+		},
 	},
 
 	-- Formatting
@@ -132,6 +136,7 @@ require("lazy").setup({
 				yaml = { "yamlfmt" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
+				dart = { "dart_format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -237,6 +242,13 @@ require("lazy").setup({
 					cmd = { "npx", "flow", "lsp" },
 					filetypes = { "javascript", "javascriptreact" },
 					root_markers = { ".flowconfig" },
+					on_attach = on_attach,
+				},
+				dartls = {
+					name = "dartls",
+					cmd = { "dart", "language-server", "--protocol=lsp" },
+					filetypes = { "dart" },
+					root_markers = { "pubspec.yaml", ".git" },
 					on_attach = on_attach,
 				},
 			}
@@ -361,7 +373,7 @@ require("lazy").setup({
 })
 
 -- Apply color scheme
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd.colorscheme("gruber-darker")
 
 -- Auto-close nvim-tree before quitting
 vim.api.nvim_create_autocmd("QuitPre", {
@@ -370,16 +382,3 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
-require("claude-code").setup({
-	window = {
-		position = "float",
-		float = {
-			width = "60%", -- Take up 90% of the editor width
-			height = "50%", -- Take up 90% of the editor height
-			row = "center", -- Center vertically
-			col = "center", -- Center horizontally
-			relative = "editor",
-			border = "double", -- Use double border style
-		},
-	},
-})
