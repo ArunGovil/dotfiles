@@ -150,13 +150,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Key helper
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		config = true,
-	},
-
 	-- AI assistants
 	{
 		"greggh/claude-code.nvim",
