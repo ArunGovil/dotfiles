@@ -1,6 +1,6 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -48,6 +48,12 @@ local function on_attach(client, bufnr)
 		"<leader>'",
 		"<cmd>Telescope lsp_references<CR>",
 		vim.tbl_extend("force", buffer_opts, { desc = "Show LSP references" })
+	)
+	keymap.set(
+		"n",
+		"gd",
+		vim.lsp.buf.definition,
+		vim.tbl_extend("force", buffer_opts, { desc = "Go to definition" })
 	)
 end
 
@@ -97,11 +103,59 @@ require("lazy").setup({
 	-- Editor enhancements
 	{ "windwp/nvim-autopairs", config = true },
 	{ "windwp/nvim-ts-autotag", config = true },
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		opts = {
+			highlight = { enable = true },
+			indent = { enable = true },
+			ensure_installed = {
+				"javascript",
+				"typescript",
+				"tsx",
+				"go",
+				"lua",
+				"dart",
+				"c",
+				"cpp",
+				"html",
+				"css",
+				"json",
+				"yaml",
+				"markdown",
+				"bash",
+			},
+			auto_install = true,
+		},
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
 	{ "norcalli/nvim-colorizer.lua", event = "BufEnter", opts = { "*" } },
 
+	-- Comments
+	{ "numToStr/Comment.nvim", config = true },
+
+	-- Surround
+	{ "kylechui/nvim-surround", event = "VeryLazy", config = true },
+
 	-- Fuzzy finder
-	{ "nvim-telescope/telescope.nvim", config = true },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+		config = function()
+			require("telescope").load_extension("fzf")
+		end,
+	},
+
+	-- Key helper
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		config = true,
+	},
 
 	-- AI assistants
 	{
@@ -159,7 +213,11 @@ require("lazy").setup({
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			{ "antosha417/nvim-lsp-file-operations", config = true },
+			{
+				"antosha417/nvim-lsp-file-operations",
+				dependencies = { "nvim-tree/nvim-tree.lua" },
+				config = true,
+			},
 		},
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -326,7 +384,7 @@ require("lazy").setup({
 			})
 
 			require("mason-tool-installer").setup({
-				ensure_installed = { "prettier", "stylua", "eslint_d" },
+				ensure_installed = { "prettier", "stylua" },
 			})
 		end,
 	},

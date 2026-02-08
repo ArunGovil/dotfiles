@@ -31,8 +31,7 @@ vim.keymap.set("n", "<leader>`", ":bufdo bd | :Explore<CR>", options) -- Reload 
 vim.keymap.set("n", "<leader>l", ":bprevious<CR>", options) -- Go to previous buffer
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", options) -- Escape terminal
 vim.keymap.set("n", "<leader>m", ":close<CR>", options) -- Minimize terminal
-vim.keymap.set("n", "<leader>'", "gd", options) -- Go to definition
-vim.keymap.set("n", "<leader><CR>", "gf<CR>", options) -- Go to file
+vim.keymap.set("n", "<leader><CR>", "gf", options) -- Go to file
 vim.keymap.set("n", "<leader>=", "<cmd>Gitsigns blame_line<CR>", { noremap = true, silent = true }) -- Blame current line
 vim.keymap.set("n", "<leader>t", function()
 	vim.cmd("botright vsplit")
