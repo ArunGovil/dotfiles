@@ -40,5 +40,11 @@ vim.keymap.set("n", "<leader>t", function()
 end, { noremap = true }) -- Split open terminal
 vim.keymap.set("n", "<leader>/", "gcc", { remap = true }) -- Toggle comment
 vim.keymap.set("v", "<leader>/", "gc", { remap = true }) -- Toggle comment (visual)
+vim.keymap.set("n", "<leader>o", "<cmd>Octo pr list<CR>", options) -- List PRs
+vim.keymap.set("n", "<leader>O", "<cmd>Octo review resume<CR>", options) -- Start/resume PR review
+vim.keymap.set("n", "<leader>Os", "<cmd>Octo review submit<CR>", options) -- Submit review
+vim.keymap.set("n", "<leader>Oc", "<cmd>Octo review close<CR>", options) -- Close review
+vim.keymap.set("n", "<leader>Oa", "<cmd>Octo comment add<CR>", options) -- Add review comment
+vim.keymap.set("n", "<leader>Oq", "<cmd>bd<CR>", options) -- Close PR buffer
 vim.keymap.set("n", "<leader>h", "<cmd>ClaudeCodeContinue<CR>") -- Claude code (continue)
 vim.keymap.set("n", "<leader>H", "<cmd>ClaudeCode<CR>") -- Claude code (new)
