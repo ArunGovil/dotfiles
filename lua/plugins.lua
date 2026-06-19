@@ -67,6 +67,15 @@ require("lazy").setup({
 	-- Color scheme
 	{ "blazkowolf/gruber-darker.nvim" },
 
+	-- REPL
+	{ "Olical/conjure" },
+
+	-- Structural editing for Lisps
+	{ "gpanders/nvim-parinfer" },
+
+	-- Rainbow delimiters
+	{ "HiPhish/rainbow-delimiters.nvim" },
+
 	-- Status line
 	{
 		"nvim-lualine/lualine.nvim",
@@ -131,6 +140,11 @@ require("lazy").setup({
 				"yaml",
 				"markdown",
 				"bash",
+				"fennel",
+				"clojure",
+				"swift",
+				"objc",
+				"heex",
 			},
 			auto_install = true,
 		},
@@ -189,9 +203,10 @@ require("lazy").setup({
 				markdown = { "prettier" },
 				lua = { "stylua" },
 				dart = { "dart_format" },
+				swift = { "swift" },
 			},
 			format_on_save = {
-				lsp_fallback = true,
+				lsp_format = "fallback",
 				timeout_ms = 500,
 			},
 		},
@@ -199,7 +214,7 @@ require("lazy").setup({
 			{
 				"<leader>F",
 				function()
-					require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
+					require("conform").format({ lsp_format = "fallback", timeout_ms = 500 })
 				end,
 				mode = { "n", "v" },
 				desc = "Format file or range",
@@ -300,11 +315,30 @@ require("lazy").setup({
 					root_markers = { ".flowconfig" },
 					on_attach = on_attach,
 				},
+				swift_sourcekit = {
+					name = "swift_sourcekit",
+					cmd = { "xcrun", "sourcekit-lsp" },
+					filetypes = { "swift", "objective-c", "objective-cpp", "c", "cpp" },
+					root_markers = { "Package.swift", ".git" },
+					on_attach = on_attach,
+					settings = {
+						sourcekitlsp = {
+							serverArguments = { "--log-level", "info" },
+						},
+					},
+				},
 				dartls = {
 					name = "dartls",
 					cmd = { "dart", "language-server", "--protocol=lsp" },
 					filetypes = { "dart" },
 					root_markers = { "pubspec.yaml", ".git" },
+					on_attach = on_attach,
+				},
+				clojure_lsp = {
+					name = "clojure_lsp",
+					cmd = { "clojure-lsp" },
+					filetypes = { "clojure", "clojurescript", "edn" },
+					root_markers = { "project.clj", "deps.edn", "build.boot", "shadow-cljs.edn", ".git" },
 					on_attach = on_attach,
 				},
 			}
@@ -379,7 +413,7 @@ require("lazy").setup({
 			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = { "ts_ls", "html", "cssls", "lua_ls", "gopls" },
+				ensure_installed = { "ts_ls", "html", "cssls", "lua_ls", "gopls", "clojure_lsp" },
 				automatic_installation = true,
 			})
 

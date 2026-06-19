@@ -48,3 +48,26 @@ vim.keymap.set("n", "<leader>Oa", "<cmd>Octo comment add<CR>", options) -- Add r
 vim.keymap.set("n", "<leader>Oq", "<cmd>bd<CR>", options) -- Close PR buffer
 vim.keymap.set("n", "<leader>h", "<cmd>ClaudeCodeContinue<CR>") -- Claude code (continue)
 vim.keymap.set("n", "<leader>H", "<cmd>ClaudeCode<CR>") -- Claude code (new)
+local function open_pi_terminal(cmd)
+	local split_ratio = 0.3
+	vim.cmd("botright vsplit")
+	vim.cmd("vertical resize " .. math.floor(vim.o.columns * split_ratio))
+	vim.cmd("terminal " .. cmd)
+	local buf = vim.api.nvim_get_current_buf()
+	vim.bo[buf].bufhidden = "hide"
+	vim.bo[buf].buflisted = false
+	local win_id = vim.api.nvim_get_current_win()
+	vim.api.nvim_set_option_value("number", false, { win = win_id })
+	vim.api.nvim_set_option_value("relativenumber", false, { win = win_id })
+	vim.api.nvim_set_option_value("signcolumn", "no", { win = win_id })
+	vim.api.nvim_set_option_value("winfixbuf", true, { win = win_id })
+	vim.cmd("startinsert")
+end
+
+vim.keymap.set("n", "<leader>i", function()
+	open_pi_terminal("pi -r")
+end, { desc = "Open pi (browse or continue last session)" })
+
+vim.keymap.set("n", "<leader>I", function()
+	open_pi_terminal("pi")
+end, { desc = "Open pi (new session)" })
